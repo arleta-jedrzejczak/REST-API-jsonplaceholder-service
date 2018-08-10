@@ -1,7 +1,7 @@
 <template lang="pug">
-  div
+  div(v-if="editing")
     h2 Edit user
-    form(v-if="!submitted")
+    form
       p Id {{user.id}}
       label Name
         input(type="text" v-model="user.name" required)
@@ -13,8 +13,8 @@
         input(type="text" v-model="user.website")
       label
         input(type="text" v-model="user.phone")
-      button(v-on:click.prevent="patch") Edit User
-    div(v-if="submitted")
+      button(v-on:click.prevent="setEdit") Edit User
+    div
       h3 User edited successfully
     div
       h3 Preview
@@ -27,10 +27,13 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+import {bus} from '../main'
 export default {
   data () {
     return {
       id: this.$route.params.id,
+      editing: false,
       user: {
         id: '',
         name: '',
@@ -38,35 +41,34 @@ export default {
         email: '',
         website: '',
         phone: ''
-      },
-      submitted: false
+      }
     }
   },
     methods: {
-      patch: function(){
-        this.$http.patch('http://jsonplaceholder.typicode.com/users/' + this.id, {
-          id: this.user.id,
-          name: this.user.name,
-          username: this.user.username,
-          email: this.user.email,
-          website: this.user.website,
-          phone: this.user.phone
-      }).then(function(data){
-        this.submitted = true
-      });
-    }
+    setEdit: function () {
+      var vm = this
+      vm.patchUser(vm.user),
+      vm.editing = false
+      this.$router.push('/')
+    },
+    ...mapActions([
+      'patchUser'
+    ])
   },
-  created() {
-    this.$http.get('http://jsonplaceholder.typicode.com/users/' + this.id).then(data => {
-      this.user.id = data.body.id,
-      this.user.name = data.body.name,
-      this.user.username = data.body.username,
-      this.user.email = data.body.email,
-      this.user.website = data.body.website,
-      this.user.phone = data.body.phone
+  created () {
+    var vm = this
+    bus.$on('changeData', (data) => {
+      vm.editing = true
+      vm.user.id = data.id
+      vm.user.name = data.name
+      vm.user.username = data.username
+      vm.user.email = data.email
+      vm.user.website = data.website
+      vm.user.phone = data.phone
     })
   }
 }
+
 </script>
 
 

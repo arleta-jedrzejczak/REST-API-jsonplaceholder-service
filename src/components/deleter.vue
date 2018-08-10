@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(v-if="deleting")
     h2 Delete user?
     ul
       li {{ user.name }}
@@ -9,28 +9,39 @@
       li {{ user.email }}
       li {{ user.website }}
       li {{ user.phone }}
-    button(v-on:click.prevent="deleter") Delete User
+    button(v-on:click.prevent="setDel") Delete User
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+import {bus} from '../main'
 export default {
   data () {
     return {
+      deleting: false,
       id: this.$route.params.id,
       user: {}
     }
   },
   methods: {
-      deleter: function(){
-        this.$http.delete('http://jsonplaceholder.typicode.com/users/' + this.id, {
-          user: this.user
-      }).then(function(data){
-      });
-    }
+    setDel: function () {
+      this.deleteUser(this.user)
+      this.$router.push('/')
+    },
+    ...mapActions([
+      'deleteUser'
+    ])
   },
   created() {
-    this.$http.get('http://jsonplaceholder.typicode.com/users/' + this.id).then(data => {
-      this.user = data.body
+    var vm = this
+    bus.$on('deleteData', (data) => {
+      vm.deleting = true
+      vm.user.id = data.id
+      vm.user.name = data.name
+      vm.user.username = data.username
+      vm.user.email = data.email
+      vm.user.website = data.website
+      vm.user.phone = data.phone
     })
   }
 }

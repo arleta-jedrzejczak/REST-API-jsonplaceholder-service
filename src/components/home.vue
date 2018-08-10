@@ -16,12 +16,11 @@
 
 <script>
 import {bus} from '../main'
-
+import {store} from './../store/store'
 export default {
   name: 'home',
   data () {
     return {
-      users: [],
       items: [
         { id: 0, description: 'id' },
         { id: 1, description: 'name' },
@@ -29,17 +28,16 @@ export default {
         { id: 3, description: 'email' },
         { id: 4, description: 'website' },
         { id: 5, description: 'phone' }
-    ],
+      ],
     }
   },
   computed: {
-
+    users () {
+      return this.$store.state.users
+    }
   },
   created () {
-    let vm = this
-    this.$http.get('http://jsonplaceholder.typicode.com/users').then(function(data){
-      this.users = data.body
-    })
+    store.dispatch('getUsers')
   },
   methods: {
 
