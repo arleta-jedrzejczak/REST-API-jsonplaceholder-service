@@ -1,9 +1,22 @@
-# app
+# REST API jsonplaceholder service
+> Training project - Rest API with VueJS, Vuex, Vue router and Vue resource
+DEMO: https://laililang.github.io/REST-API-jsonplaceholder-service/
 
-> A Vue.js project
+## Table of contents
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Contact](#contact)
 
-## Build Setup
+## Technologies
+* VueJS - version 2.5.11
+* Vuex - version 3.0.1
+* Vue router - version 3.0.1
+* Vue resource - version 1.5.1
+* Bootstrap - version 2.0
+* Webpack - version 3.6.0
+* Pug - version 2.0.3
 
+## Setup
 ``` bash
 # install dependencies
 npm install
@@ -15,5 +28,5 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
-"# REST-API-jsonplaceholder-service" 
+## Contact
+Created by Arleta Jędrzejczak (https://laililang.github.io/Memory) - feel free to contact me!
