@@ -1,18 +1,22 @@
 <template lang="pug">
   div
-    editor
-    deleter
-    div(v-if="!editing&&!deleting")
-      h2 {{ user.name }}
-      ul
-        li {{ user.id }}
-        li {{ user.name }}
-        li {{ user.username }}
-        li {{ user.email }}
-        li {{ user.website }}
-        li {{ user.phone }}
-      button(v-on:click.prevent="openForm(user)") Edit user
-      button(v-on:click.prevent="confirmDelete(user)") Delete user
+    div.jumbotron.jumbotron-fluid.bg-secondary.text-muted.text-center
+      h2.display-3 {{ user.name }}
+    div.container.text-muted
+      editor
+      deleter
+      div(v-if="!editing&&!deleting").row
+        div.col-md-6.col-lg-3.flex-column.justify-content-between.align-items-between
+          div.card
+            ul.card-block
+              li {{ user.id }}
+              li {{ user.name }}
+              li {{ user.username }}
+              li {{ user.email }}
+              li {{ user.website }}
+              li {{ user.phone }}
+            button(v-on:click.prevent="openForm(user)").btn.btn-outline-primary Edit user
+            button(v-on:click.prevent="confirmDelete(user)").btn.btn-outline-primary Delete user
 </template>
 
 <script>

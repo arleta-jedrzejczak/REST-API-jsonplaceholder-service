@@ -1,17 +1,19 @@
 <template lang="pug">
-  div
-    h1 Users
-    table
-      th(v-for="item in items" v-bind:key="item.id")
-        tr {{item.description}}
-      td(v-for="user in users")
-        tr {{ user.id }}
-        router-link(v-bind:to="'/' + user.id")
-          tr {{ user.name }}
-        tr {{ user.username }}
-        tr {{ user.email }}
-        tr {{ user.website }}
-        tr {{ user.phone }}
+  main
+    div.jumbotron.jumbotron-fluid.bg-secondary.text-muted.text-center
+      h1.display-2 Users
+    div.container.text-muted
+      div.row
+        div.col-md-6.col-lg-4.flex-column.justify-content-center.align-items-center
+          div(v-for="user in users").card
+            div.card-block
+              tr {{ user.id }}
+              router-link(v-bind:to="'/' + user.id")
+                tr.card-title {{ user.name }}
+              tr {{ user.username }}
+              tr {{ user.email }}
+              tr {{ user.website }}
+              tr {{ user.phone }}
 </template>
 
 <script>
@@ -21,14 +23,7 @@ export default {
   name: 'home',
   data () {
     return {
-      items: [
-        { id: 0, description: 'id' },
-        { id: 1, description: 'name' },
-        { id: 2, description: 'username' },
-        { id: 3, description: 'email' },
-        { id: 4, description: 'website' },
-        { id: 5, description: 'phone' }
-      ],
+  
     }
   },
   computed: {

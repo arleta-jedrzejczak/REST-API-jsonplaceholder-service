@@ -1,25 +1,31 @@
 <template lang="pug">
   div
-    h2 Add a New User
-    form
-      label Name
-        input(type="text" v-model="user.name" required)
-      label
-        input(type="text" v-model="user.username" required)
-      label
-        input(type="email" v-model="user.email" required)
-      label
-        input(type="text" v-model="user.website")
-      label
-        input(type="text" v-model="user.phone")
-      button(v-on:click.prevent="getId") Add User
-    div
-      h3 Preview
-      p Name: {{ user.name }}
-      p Username: {{ user.username }}
-      p Email: {{ user.email }}
-      p Website: {{ user.website }}
-      p Phone: {{ user.phone }}
+    div.jumbotron.jumbotron-fluid.bg-secondary.text-muted.text-center
+      h2.display-3 Add a New User
+    div.container.text-muted
+      div.row
+        div.col-md-6.col-lg-4.flex-column.justify-content-between.align-items-between
+          div.card
+            div.card-block.flex-column.justify-content-between.align-items-between
+              form.card-block
+                label Name
+                  input(type="text" v-model="user.name" required)
+                label Username
+                  input(type="text" v-model="user.username" required)
+                label Email
+                  input(type="email" v-model="user.email" required)
+                label Website
+                  input(type="text" v-model="user.website")
+                label Phone
+                  input(type="text" v-model="user.phone")
+              button(v-on:click.prevent="getId").btn.btn-outline-primary Add User
+              div.card-block
+                h3 Preview
+                p Name: {{ user.name }}
+                p Username: {{ user.username }}
+                p Email: {{ user.email }}
+                p Website: {{ user.website }}
+                p Phone: {{ user.phone }}
 </template>
 
 <script>

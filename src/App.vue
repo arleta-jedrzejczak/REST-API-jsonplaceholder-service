@@ -1,7 +1,8 @@
 <template lang="pug">
   #app
     panel
-    router-view
+    div.jumbotron.jumbotron-fluid.bg-primary
+    router-view.jumbotron-fluid
 </template>
 
 <script>
@@ -22,6 +23,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+#app
+  font-family 'Lato', sans-serif
 </style>

@@ -1,29 +1,30 @@
 <template lang="pug">
-  div(v-if="editing")
-    h2 Edit user
-    form
-      p Id {{user.id}}
-      label Name
-        input(type="text" v-model="user.name" required)
-      label
-        input(type="text" v-model="user.username" required)
-      label
-        input(type="email" v-model="user.email" required)
-      label
-        input(type="text" v-model="user.website")
-      label
-        input(type="text" v-model="user.phone")
-      button(v-on:click.prevent="setEdit") Edit User
-    div
-      h3 User edited successfully
-    div
-      h3 Preview
-      p Id: {{ user.id }}
-      p Name: {{ user.name }}
-      p Username: {{ user.username }}
-      p Email: {{ user.email }}
-      p Website: {{ user.website }}
-      p Phone: {{ user.phone }}
+  div(v-if="editing").container.text-muted
+    div.row
+      div.col-md-6.col-lg-4.flex-column.justify-content-between.align-items-between
+        div.card
+          form.card-block.flex-column.justify-content-between.align-items-between
+            h3.display-4 Edit user
+            p Id {{user.id}}
+            label Name
+              input(type="text" v-model="user.name" required)
+            label Username
+              input(type="text" v-model="user.username" required)
+            label Email
+              input(type="email" v-model="user.email" required)
+            label Website
+              input(type="text" v-model="user.website")
+            label Phone
+              input(type="text" v-model="user.phone")
+          button(v-on:click.prevent="setEdit").btn.btn-outline-primary Edit User
+          div.card-block
+            h3.display-4 Preview
+            p Id: {{ user.id }}
+            p Name: {{ user.name }}
+            p Username: {{ user.username }}
+            p Email: {{ user.email }}
+            p Website: {{ user.website }}
+            p Phone: {{ user.phone }}
 </template>
 
 <script>

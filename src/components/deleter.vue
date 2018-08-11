@@ -1,15 +1,19 @@
 <template lang="pug">
-  div(v-if="deleting")
-    h2 Delete user?
-    ul
-      li {{ user.name }}
-      li {{ user.id }}
-      li {{ user.name }}
-      li {{ user.username }}
-      li {{ user.email }}
-      li {{ user.website }}
-      li {{ user.phone }}
-    button(v-on:click.prevent="setDel") Delete User
+  div(v-if="deleting").container.text-muted
+    div.row
+      div.col-md-6.col-lg-4.flex-column.justify-content-between.align-items-between
+        div.card
+          div.card-block.flex-column.justify-content-between.align-items-between
+            h3.display-4 Delete user?
+            ul
+              li {{ user.name }}
+              li {{ user.id }}
+              li {{ user.name }}
+              li {{ user.username }}
+              li {{ user.email }}
+              li {{ user.website }}
+              li {{ user.phone }}
+            button(v-on:click.prevent="setDel").btn.btn-outline-primary Delete User
 </template>
 
 <script>
