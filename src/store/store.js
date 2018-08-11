@@ -51,22 +51,22 @@ export const store = new Vuex.Store({
   },
   actions: {
     getUsers: context => {
-      Vue.http.get('http://jsonplaceholder.typicode.com/users').then(function(data){
+      Vue.http.get('https://jsonplaceholder.typicode.com/users').then(function(data){
         context.commit('getUsers', data)
       })
     },
     patchUser: (context, user) => {
-      Vue.http.patch('http://jsonplaceholder.typicode.com/users/' + user.id).then(function(data){
+      Vue.http.patch('https://jsonplaceholder.typicode.com/users/' + user.id).then(function(data){
         context.commit('patchUser', user)
       })
     },
     deleteUser: (context, user) => {
-      Vue.http.delete('http://jsonplaceholder.typicode.com/users/' + user.id).then(function(data){
+      Vue.http.delete('https://jsonplaceholder.typicode.com/users/' + user.id).then(function(data){
         context.commit('deleteUser', user)
       })
     },
     addUser: (context, user) => {
-      Vue.http.post('http://jsonplaceholder.typicode.com/users/').then(function(data){
+      Vue.http.post('https://jsonplaceholder.typicode.com/users/').then(function(data){
         context.commit('addUser', user)
       })
     }
