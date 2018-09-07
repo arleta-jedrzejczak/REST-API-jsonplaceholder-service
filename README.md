@@ -29,4 +29,4 @@ npm run build
 ```
 
 ## Contact
-Created by Arleta Jędrzejczak (https://laililang.github.io/Memory) - feel free to contact me!
+Created by Arleta Jędrzejczak (https://arleta-jedrzejczak.github.io/Memory) - feel free to contact me!
