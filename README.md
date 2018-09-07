@@ -1,6 +1,6 @@
 # REST API jsonplaceholder service
 > Training project - Rest API with VueJS, Vuex, Vue router and Vue resource
-DEMO: https://laililang.github.io/REST-API-jsonplaceholder-service/
+DEMO: https://arleta-jedrzejczak.github.io/REST-API-jsonplaceholder-service/
 
 ## Table of contents
 * [Technologies](#technologies)
